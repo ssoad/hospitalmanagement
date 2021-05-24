@@ -596,14 +596,12 @@ def doctor_patient_view(request):
 @login_required(login_url='hospitallogin')
 @user_passes_test(is_hospital)
 def hospital_dashboard_view(request):
-    hospital = Hospital.objects.get(user=request.user)
-    print(type(hospital))
+    hospital = Hospital.objects.filter(user=request.user).first()
+    print((hospital.hospital_name))
     if request.method == 'POST':
         text = request.POST.get('post_text')
         print(text)
-        post = Post()
-        post.text = text
-        post.hospital = hospital,
+        post = Post(text=text, hospital=hospital)
         post.save()
 
     post_form = Post_Form(),
