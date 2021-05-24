@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>About my project</title>
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+    .glow {
+      font-size: 50px;
+      color: white;
+      text-align: center;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+      }
+
+      to {
+        text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+    }
+  </style>
+  <title>Saifullah</title>
+</head>
+
+<body>
+  {% include "hospital/navbar.html" %}
+  <br><br>
+  <center>
+    <h3 class='alert alert-success' style="margin-bottom:0px;">My Project Objective !</h3>
+  </center>
+  <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
+    <h1 class="display-4 glow">Online HealthCare management System</h1>
+    <p class="lead">
+      <h1>Details </h1>
+      •	This will bring all the hospitals in one platform. It will make the largest hospital network in Bangladesh. So that, the patients can easily access to these hospitals.</br>
+      •	This hospital network will unify all the hospitals and applicants together. </br>
+      •	That offers several tools to allow the patients to view the complete information of the existing hospitals and service process.</br>
+      •	Hospitals can attract the patients by providing discounts, presenting their specialists, special service facilities, etc. in their newsfeed</br>
+      •	And also will offer the standards of the hospitals in Bangladesh.</br>
+      •	patients can choice the hospitals with own interest.</br>
+      •	So in this way, we can make a comfortable connection among the hospitals and the patients.</br>
+
+    </p>
+    <p class="lead">
+    <h1>So what made me motivated to create this application?</h1>
+      •	I didn’t find such type of digital healthcare management application in Bangladesh. But it is today’s demand. As Smartphones and tabs have made life easier, So why not in healthcare management.
+      •	There is No easy platform to view the complete information of the existing hospitals and service process. So I felt it will be a good idea to make such hospital network.
+      •	Another issue but very important one is- it is Difficult to recognize the standards of the hospitals in Bangladesh. There are a lot of disqualified, unauthorized, fake hospitals and there is not much steps against them. So there is a need to create a platform where the patients can find the standards from previous feedback.
+
+      <h1>So what do we need today?  </h1>
+      •	Today We need a Smart online checkout hospital service reliability
+      •	Which will Offer several tools to view the complete hospital information
+      •	The patients can be able to rate the hospital performances.
+      •	 A network is needed which helps access to patient waveforms at anytime from anywhere.
+      •	A Better communication among the hospitals and the patients is truly needed in Bangladesh.
+      •	Applicants can get Current information of hospital services.
+      •	And Contact information of the specialists in a specific hospital.
+      •	all these services will improve patient safety.
+      •	and will give the patients Faster search time.
+    </p>
+    <p class="display-5 glow">This connection will ensure a hassle-free application process.</p>
+    <hr class="my-4">
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
+    </p>
+  </div>
+  {% include "hospital/footer.html" %}
+</body>
+
+
+</html>

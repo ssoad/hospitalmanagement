@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Contact me</title>
+  <style media="screen">
+    .glow {
+      font-size: 50px;
+      color: white;
+      text-align: center;
+      -webkit-animation: glow 1s ease-in-out infinite alternate;
+      -moz-animation: glow 1s ease-in-out infinite alternate;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+      }
+
+      to {
+        text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  {% include "hospital/navbar.html" %}
+  <br><br>
+
+  <center>
+    </br></br></br>
+    <h1 class="display-4 glow">Saifullah Sifat</h1>
+    <p class="lead">
+      •	ID: 14201901</br>
+      •	Depertment of CSE</br>
+      •	University of Asia Pacific</br>
+    </p>
+    <h3 class='alert alert-success glow' style="margin-bottom:0px;">Project submitted to - Hasan Murad</h3>
+  </center>
+
+</body>
+
+
+</html>
