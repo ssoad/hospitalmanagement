@@ -65,10 +65,8 @@ class Patient(models.Model):
 
 
 class Appointment(models.Model):
-    patientId = models.PositiveIntegerField(null=True)
-    doctorId = models.PositiveIntegerField(null=True)
-    patientName = models.CharField(max_length=40, null=True)
-    doctorName = models.CharField(max_length=40, null=True)
+    patient = models.ForeignKey(Patient,null=True, blank=True,on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor,null=False, blank=False, on_delete=models.CASCADE)
     appointmentDate = models.DateField(auto_now=True)
     description = models.TextField(max_length=500)
     status = models.BooleanField(default=False)

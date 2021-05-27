@@ -274,7 +274,7 @@ def approve_doctor_view(request, pk):
     doctor = models.Doctor.objects.get(id=pk)
     doctor.status = True
     doctor.save()
-    return redirect(reverse('admin-approve-doctor'))
+    return redirect('admin-dashboard')
 
 
 @login_required(login_url='adminlogin')
@@ -383,7 +383,7 @@ def approve_patient_view(request, pk):
     patient = models.Patient.objects.get(id=pk)
     patient.status = True
     patient.save()
-    return redirect(reverse('admin-approve-patient'))
+    return redirect('admin-dashboard')
 
 
 @login_required(login_url='adminlogin')
@@ -569,6 +569,7 @@ def doctor_dashboard_view(request):
 
     # for  table in doctor dashboard
     appointments = models.Appointment.objects.all().filter(status=True, doctorId=request.user.id).order_by('-id')
+    print(appointments)
     patientid = []
     for a in appointments:
         patientid.append(a.patientId)

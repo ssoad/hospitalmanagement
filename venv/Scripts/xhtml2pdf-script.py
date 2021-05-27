@@ -1,4 +1,4 @@
-#!"c:\users\sohan\downloads\compressed\national healthcare online management\hospitalmanagement\venv\scripts\python.exe"
+#!"d:\new folder\compressed\national healthcare online management\hospitalmanagement\venv\scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'xhtml2pdf==0.2.5','console_scripts','xhtml2pdf'
 import re
 import sys

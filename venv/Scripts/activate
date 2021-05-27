@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\sohan\Downloads\Compressed\National Healthcare Online Management\hospitalmanagement\venv"
+VIRTUAL_ENV="D:\New folder\Compressed\National Healthcare Online Management\hospitalmanagement\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
