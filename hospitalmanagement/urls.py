@@ -40,7 +40,10 @@ urlpatterns = [
     path('doctorlogin', LoginView.as_view(template_name='hospital/doctorlogin.html')),
     path('patientlogin', LoginView.as_view(template_name='hospital/patientlogin.html')),
     path('hospitallogin', LoginView.as_view(template_name='hospital/hospitallogin.html')),
-
+    path('hospital-patient', views.hospital_patient),
+    path('hospital-patient-add', views.hospital_add_patient),
+    path('hospital-patient-admitted', views.hospital_admitted_patient),
+    path('hospital-patient-discharged', views.hospital_discharged_patient),
 
     path('afterlogin', views.afterlogin_view,name='afterlogin'),
     path('logout', LogoutView.as_view(template_name='hospital/index.html'),name='logout'),
@@ -107,5 +110,7 @@ urlpatterns +=[
     path('patient-book-appointment', views.patient_book_appointment_view,name='patient-book-appointment'),
     path('patient-view-appointment', views.patient_view_appointment_view,name='patient-view-appointment'),
     path('patient-discharge', views.patient_discharge_view,name='patient-discharge'),
+    path('patient-doctor-review/<int:pk>', views.doctor_review),
+    path('patient-hospital-review/<int:pk>', views.hospital_review)
 
 ]

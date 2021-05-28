@@ -2,9 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from . import models
 
-
 # for admin signup
-from .models import Post
+from .models import Post, HospitalPatient, HospitalReview, DoctorReview
 
 
 class AdminSigupForm(forms.ModelForm):
@@ -70,23 +69,19 @@ class PatientForm(forms.ModelForm):
 
 
 class AppointmentForm(forms.ModelForm):
-    doctorId = forms.ModelChoiceField(queryset=models.Doctor.objects.all().filter(status=True),
-                                      empty_label="Doctor Name and Department", to_field_name="user_id")
-    patientId = forms.ModelChoiceField(queryset=models.Patient.objects.all().filter(status=True),
-                                       empty_label="Patient Name and Symptoms", to_field_name="user_id")
+
 
     class Meta:
-        model = models.Appointment
-        fields = ['description', 'status']
+        model = models.DoctorAppointment
+        fields = '__all__'
 
 
 class PatientAppointmentForm(forms.ModelForm):
-    doctorId = forms.ModelChoiceField(queryset=models.Doctor.objects.all().filter(status=True),
-                                      empty_label="Doctor Name and Department", to_field_name="user_id")
+
 
     class Meta:
-        model = models.Appointment
-        fields = ['description', 'status']
+        model = models.DoctorAppointment
+        fields = ['doctor','description', 'status']
 
 
 # for contact us page
@@ -100,3 +95,21 @@ class Post_Form(forms.ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
+
+
+class HospitalPatientForm(forms.ModelForm):
+    class Meta:
+        model = HospitalPatient
+        fields = ['patient', 'status', 'symptoms']
+
+
+class HospitalReviewForm(forms.ModelForm):
+    class Meta:
+        model = HospitalReview
+        fields = ['rating', 'comment']
+
+
+class DoctorReviewForm(forms.ModelForm):
+    class Meta:
+        model = DoctorReview
+        fields = ['rating', 'comment']

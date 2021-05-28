@@ -2,33 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a6b1aa5-d73f-4c94-8857-4cce5c83b103" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/profile_pic/DoctorProfilePic/MicrosoftTeams-image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/profile_pic/DoctorProfilePic/MicrosoftTeams-image_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hospitalmanagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hospitalmanagement.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/hospital/hospital_add_patient.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/hospital/hospital_admitted_patient.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/hospital/hospital_patient.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/hospital/hospital_patient_cards.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/hospital/patient_doctor_review.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/hospital/patient_hospital_review.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospital/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospital/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/hospital/admin_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/admin_dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/hospital/patientsignup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/patientsignup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Django-3.0.5.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Django-3.0.5.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.1.2.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.1.2.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/python_bidi-0.4.2.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/python_bidi-0.4.2.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/sqlparse-0.3.1.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/sqlparse-0.3.1.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/activate" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/activate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/activate.bat" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/activate.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/django-admin.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/django-admin.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/django-admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/django-admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/futurize-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/futurize-script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pasteurize-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pasteurize-script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.9.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.9.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pisa-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pisa-script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pybidi.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pybidi.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/sqlformat.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/sqlformat.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/xhtml2pdf-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/xhtml2pdf-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospitalmanagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalmanagement/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hospital/doctor_patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/doctor_patient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hospital/hospital_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/hospital_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hospital/patient_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/patient_base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hospital/patient_book_appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/patient_book_appointment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hospital/patient_view_appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/patient_view_appointment.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +38,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1szfqQKssaoxJbKTKjTIZGY2QJu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -100,11 +99,23 @@
       <workItem from="1621880961811" duration="7781000" />
       <workItem from="1622014392339" duration="631000" />
       <workItem from="1622143361210" duration="850000" />
-      <workItem from="1622144714439" duration="4289000" />
+      <workItem from="1622144714439" duration="21977000" />
     </task>
+    <task id="LOCAL-00001" summary="Todays Update">
+      <created>1622149248209</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1622149248209</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Todays Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Todays Update" />
   </component>
 </project>
