@@ -108,9 +108,10 @@ urlpatterns +=[
     path('patient-dashboard', views.patient_dashboard_view,name='patient-dashboard'),
     path('patient-appointment', views.patient_appointment_view,name='patient-appointment'),
     path('patient-book-appointment', views.patient_book_appointment_view,name='patient-book-appointment'),
-    path('patient-view-appointment', views.patient_view_appointment_view,name='patient-view-appointment'),
+    path('patient-view-appointment', views.patient_view_doctor_appointment_view, name='patient-view-appointment'),
     path('patient-discharge', views.patient_discharge_view,name='patient-discharge'),
     path('patient-doctor-review/<int:pk>', views.doctor_review),
-    path('patient-hospital-review/<int:pk>', views.hospital_review)
+    path('patient-hospital-review/<int:pk>', views.hospital_review),
+    path('patient-hospital-history', views.patient_hospital_history)
 
 ]

@@ -1,0 +1,63 @@
+{% extends 'hospital/patient_base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Your Appointments</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Hospital Name</th>
+          <th>Description</th>
+{#          <th>Date</th>#}
+          <th>Status</th>
+            <th>Review</th>
+        </tr>
+      </thead>
+      {% for a in appointments %}
+      <tr>
+        <td> {{a.hospital.hospital_name}}</td>
+        <td>{{a.symptoms}}</td>
+{#        <td>{{a.appointmentDate}}</td>#}
+        {%if a.status == 'Admitted'%}
+        <td> <span class="label label-primary">Admitted</span></td>
+        {% else %}
+        <td> <span class="label label-success">Discharged</span></td>
+        {% endif %}
+      <td>
+          {% if not a.is_reviewed %}
+          <a href="/patient-hospital-review/{{ a.id }}">Click to Review</a>
+          {% else %}
+          <span class="label label-success">Done</span>
+          {% endif %}
+      </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+
+{% endblock content %}

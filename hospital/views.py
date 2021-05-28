@@ -732,7 +732,7 @@ def patient_book_appointment_view(request):
 
 @login_required(login_url='patientlogin')
 @user_passes_test(is_patient)
-def patient_view_appointment_view(request):
+def patient_view_doctor_appointment_view(request):
     patient = models.Patient.objects.get(user_id=request.user.id)  # for profile picture of patient in sidebar
     appointments = models.DoctorAppointment.objects.all().filter(patient=patient)
     return render(request, 'hospital/patient_view_appointment.html', {'appointments': appointments, 'patient': patient})
@@ -886,8 +886,26 @@ def doctor_review(request, pk):
 
 
 def hospital_review(request, pk):
-    form = HospitalReviewForm()
+    hospital_appointment = models.HospitalPatient.objects.get(id=pk)
+    hospital = hospital_appointment.hospital
+    if request.method == "POST":
+        form = HospitalReviewForm(request.POST)
+        print(form.is_valid())
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.hospital = hospital
+            review.save()
+            hospital_appointment.is_reviewed = True
+            hospital_appointment.save()
     dic = {
-        'form': form
+        'form': HospitalReviewForm()
     }
     return render(request, 'hospital/patient_hospital_review.html', context=dic)
+
+
+def patient_hospital_history(request):
+    hospital_history = models.HospitalPatient.objects.filter(patient__user=request.user)
+    dic = {
+        'appointments' : hospital_history
+    }
+    return render(request, 'hospital/patient_hospital_history.html', context=dic)
