@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, reverse
 from . import forms, models
 from django.db.models import Sum
@@ -529,7 +530,7 @@ def admin_add_appointment_view(request):
 @user_passes_test(is_admin)
 def admin_approve_appointment_view(request):
     # those whose approval are needed
-    appointments = models.Appointment.objects.all().filter(status=False)
+    appointments = models.DoctorAppointment.objects.all().filter(status=False)
     return render(request, 'hospital/admin_approve_appointment.html', {'appointments': appointments})
 
 
@@ -563,16 +564,16 @@ def reject_appointment_view(request, pk):
 def doctor_dashboard_view(request):
     # for three cards
     patientcount = models.Patient.objects.all().filter(status=True, assignedDoctorId=request.user.id).count()
-    appointmentcount = models.DoctorAppointment.objects.all().filter(status=True, doctorId=request.user.id).count()
+    appointmentcount = models.DoctorAppointment.objects.all().filter(status=True, doctor__user=request.user).count()
     patientdischarged = models.PatientDischargeDetails.objects.all().distinct().filter(
         assignedDoctorName=request.user.first_name).count()
 
     # for  table in doctor dashboard
-    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctorId=request.user.id).order_by('-id')
+    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctor__user=request.user).order_by('-id')
     print(appointments)
     patientid = []
     for a in appointments:
-        patientid.append(a.patientId)
+        patientid.append(a.patient_id)
     patients = models.Patient.objects.all().filter(status=True, user_id__in=patientid).order_by('-id')
     appointments = zip(appointments, patients)
     mydict = {
@@ -644,10 +645,10 @@ def doctor_appointment_view(request):
 @user_passes_test(is_doctor)
 def doctor_view_appointment_view(request):
     doctor = models.Doctor.objects.get(user_id=request.user.id)  # for profile picture of doctor in sidebar
-    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctorId=request.user.id)
+    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctor__user_id=request.user.id)
     patientid = []
     for a in appointments:
-        patientid.append(a.patientId)
+        patientid.append(a.patient_id)
     patients = models.Patient.objects.all().filter(status=True, user_id__in=patientid)
     appointments = zip(appointments, patients)
     return render(request, 'hospital/doctor_view_appointment.html', {'appointments': appointments, 'doctor': doctor})
@@ -802,9 +803,17 @@ def contactus_view(request):
 # ------------------------ ADMIN RELATED VIEWS END ------------------------------
 # ---------------------------------------------------------------------------------
 def formsView(request):
-    post_form = Post_Form()
+    user_list = models.Hospital.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(user_list, 10)
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
     dic = {
-        'form': post_form,
+        "hospitals": users
     }
     return render(request, 'hospital/test.html', dic)
 
@@ -906,6 +915,6 @@ def hospital_review(request, pk):
 def patient_hospital_history(request):
     hospital_history = models.HospitalPatient.objects.filter(patient__user=request.user)
     dic = {
-        'appointments' : hospital_history
+        'appointments': hospital_history
     }
     return render(request, 'hospital/patient_hospital_history.html', context=dic)
