@@ -562,6 +562,12 @@ def reject_appointment_view(request, pk):
 @login_required(login_url='doctorlogin')
 @user_passes_test(is_doctor)
 def doctor_dashboard_view(request):
+    if request.method == 'POST':
+        doctor = models.Doctor.objects.get(user=request.user)
+        text = request.POST.get('post_text')
+        print(text)
+        post = Post(text=text, doctor=doctor)
+        post.save()
     # for three cards
     patientcount = models.Patient.objects.all().filter(status=True, assignedDoctorId=request.user.id).count()
     appointmentcount = models.DoctorAppointment.objects.all().filter(status=True, doctor__user=request.user).count()
@@ -924,7 +930,7 @@ def patient_hospital_history(request):
 def hospital_list(request):
     user_list = models.Hospital.objects.all()
     page = request.GET.get('page', 1)
-    paginator = Paginator(user_list, 10)
+    paginator = Paginator(user_list, 5)
     try:
         users = paginator.page(page)
     except PageNotAnInteger:
@@ -949,7 +955,7 @@ def hospital_indiv_review(request, id):
 def doctor_list(request):
     user_list = models.Doctor.objects.all()
     page = request.GET.get('page', 1)
-    paginator = Paginator(user_list, 10)
+    paginator = Paginator(user_list, 5)
     try:
         users = paginator.page(page)
     except PageNotAnInteger:
@@ -970,3 +976,5 @@ def doctor_indiv_review(request, id):
         "reviews": reviews
     }
     return render(request, 'hospital/doctor_review_view.html', dic)
+
+

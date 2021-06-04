@@ -32,20 +32,20 @@
 </div>
     {% endfor %}
 
-{% if users.has_other_pages %}
+{% if hospitals.has_other_pages %}
  <nav aria-label="Page navigation example">
   <ul class="pagination">
-      {% if users.has_previous %}
-      <li class="page-item"><a class="page-link" href="?page={{ users.previous_page_number }}">Previous</a></li>
+      {% if hospitals.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ hospitals.previous_page_number }}">Previous</a></li>
     {% endif %}
-   {% for i in users.paginator.page_range %}
-       {% if users.number == i %}
+   {% for i in hospitals.paginator.page_range %}
+       {% if hospitals.number == i %}
         <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
        {% else %}
            <li class="page-item "><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
        {% endif %}
   {% endfor %}
-   {% if users.has_next %}
+   {% if hospitals.has_next %}
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
    {% endif %}
   </ul>

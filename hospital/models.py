@@ -93,7 +93,8 @@ class PatientDischargeDetails(models.Model):
 
 
 class Post(models.Model):
-    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE,blank=True, null=True)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE,blank=True, null=True)
     # user = models.ForeignKey(User, on_delete=models.CASCADE),
     text = models.CharField(max_length=1000, null=False, blank=False)
 
