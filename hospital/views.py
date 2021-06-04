@@ -625,7 +625,7 @@ def hospital_dashboard_view(request):
 @login_required(login_url='doctorlogin')
 @user_passes_test(is_doctor)
 def doctor_view_patient_view(request):
-    patients = models.Patient.objects.all().filter(status=True, assignedDoctorId=request.user.id)
+    patients = models.Patient.objects.all().filter(status="Enrolled", assignedDoctorId=request.user.id)
     doctor = models.Doctor.objects.get(user_id=request.user.id)  # for profile picture of doctor in sidebar
     return render(request, 'hospital/doctor_view_patient.html', {'patients': patients, 'doctor': doctor})
 
@@ -978,3 +978,46 @@ def doctor_indiv_review(request, id):
     return render(request, 'hospital/doctor_review_view.html', dic)
 
 
+def doctor_discharge_patient_view(request, pk):
+    patient = models.Patient.objects.get(id=pk)
+    days = (date.today() - patient.admitDate)  # 2 days, 0:00:00
+    assignedDoctor = models.User.objects.all().filter(id=patient.assignedDoctorId)
+    d = days.days  # only how many day that is 2
+    patientDict = {
+        'patientId': pk,
+        'name': patient.get_name,
+        'mobile': patient.mobile,
+        'address': patient.address,
+        'symptoms': patient.symptoms,
+        'admitDate': patient.admitDate,
+        'todayDate': date.today(),
+        'day': d,
+        'assignedDoctorName': assignedDoctor[0].first_name,
+    }
+    if request.method == 'POST':
+        patient.status = "Discharged"
+        patient.save()
+        feeDict = {
+            'doctorFee': request.POST['doctorFee'],
+            'medicineCost': request.POST['medicineCost'],
+            'total': int(request.POST['doctorFee']) + int(
+                request.POST['medicineCost'])
+        }
+        patientDict.update(feeDict)
+        # for updating to database patientDischargeDetails (pDD)
+        pDD = models.PatientDischargeDetails()
+        pDD.patientId = pk
+        pDD.patientName = patient.get_name
+        pDD.assignedDoctorName = assignedDoctor[0].first_name
+        pDD.address = patient.address
+        pDD.mobile = patient.mobile
+        pDD.symptoms = patient.symptoms
+        pDD.admitDate = date.today()
+        pDD.releaseDate = date.today()
+        pDD.daySpent = int(d)
+        pDD.medicineCost = int(request.POST['medicineCost'])
+        pDD.doctorFee = int(request.POST['doctorFee'])
+        pDD.total = int(request.POST['doctorFee']) + int(request.POST['medicineCost'])
+        pDD.save()
+        return render(request, 'hospital/doctor_patient_final_bill.html', context=patientDict)
+    return render(request, 'hospital/doctor_patient_bill.html', context=patientDict)
