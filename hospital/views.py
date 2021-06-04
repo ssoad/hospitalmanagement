@@ -945,3 +945,28 @@ def hospital_indiv_review(request, id):
         "reviews": reviews
     }
     return render(request, 'hospital/hospital_review_view.html', dic)
+
+def doctor_list(request):
+    user_list = models.Doctor.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(user_list, 10)
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+    dic = {
+        "doctors": users
+    }
+    return render(request, 'hospital/doctor_list.html', dic)
+
+
+def doctor_indiv_review(request, id):
+    doctor = models.Doctor.objects.filter(id=id).first()
+    reviews = models.DoctorReview.objects.filter(doctor=doctor)
+    dic = {
+        "doctor": doctor,
+        "reviews": reviews
+    }
+    return render(request, 'hospital/doctor_review_view.html', dic)

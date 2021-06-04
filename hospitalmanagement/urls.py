@@ -108,6 +108,8 @@ urlpatterns += [
 
     # For Review
     path('hospitals_list', views.hospital_list, ),
+    path('doctors_list', views.doctor_list, ),
     path('hospitals/review/<int:id>', views.hospital_indiv_review, ),
+    path('doctors/review/<int:id>', views.doctor_indiv_review, ),
 
 ]
