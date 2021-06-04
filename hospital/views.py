@@ -918,3 +918,30 @@ def patient_hospital_history(request):
         'appointments': hospital_history
     }
     return render(request, 'hospital/patient_hospital_history.html', context=dic)
+
+
+# Hospital List
+def hospital_list(request):
+    user_list = models.Hospital.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(user_list, 10)
+    try:
+        users = paginator.page(page)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+    dic = {
+        "hospitals": users
+    }
+    return render(request, 'hospital/hospital_list.html', dic)
+
+
+def hospital_indiv_review(request, id):
+    hospital = models.Hospital.objects.filter(id=id).first()
+    reviews = models.HospitalReview.objects.filter(hospital=hospital)
+    dic = {
+        "hospital": hospital,
+        "reviews": reviews
+    }
+    return render(request, 'hospital/hospital_review_view.html', dic)

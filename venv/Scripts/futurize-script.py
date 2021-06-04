@@ -1,4 +1,4 @@
-#!"d:\new folder\compressed\national healthcare online management\hospitalmanagement\venv\scripts\python.exe"
+#!c:\users\sohan\pycharmprojects\hospitalmanagement\venv\scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'future==0.18.2','console_scripts','futurize'
 import re
 import sys
