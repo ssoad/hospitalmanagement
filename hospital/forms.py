@@ -81,7 +81,7 @@ class PatientAppointmentForm(forms.ModelForm):
 
     class Meta:
         model = models.DoctorAppointment
-        fields = ['doctor','description', 'status']
+        fields = ['doctor','symtoms','description', 'status']
 
 
 # for contact us page
