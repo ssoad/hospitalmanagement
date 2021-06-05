@@ -9,10 +9,10 @@
     <div class="card shadow-sm" style="padding: 25px">
         <div class="row">
             <div class="col-md-3">
-                 <img src="{% static hospital.profile_pic.url %}" width="100" height="100" alt="Profile Pic" />
+                 <img src="{% static doctor.profile_pic.url %}" width="100" height="100" alt="Profile Pic" />
         </div>
             <div class="col-md-8">
-                 <h4>{{ hospital.hospital_name }}</h4>
+                 <h4>{{ doctor.user.get_full_name }}</h4>
         <h5>{{ hospital.location }}</h5>
         <h5>{{ hospital.mobile }}</h5>
         </div>
@@ -55,7 +55,7 @@
         </div>
 
         {% endif %}
-    <p>{{ r.comment }}</p>
+    <p style="font-family: 'Harlow Solid Italic'; font-size: medium">"{{ r.comment }}"</p>
 
     </div>
 

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+hospital_patient_status = [('Admitted', 'Admitted'), ('Discharged', 'Discharged')]
+doctor_patient_status = [('Enrolled', 'Enrolled'), ('Discharged', 'Discharged')]
 
 class Hospital(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -50,7 +51,7 @@ class Patient(models.Model):
     symptoms = models.CharField(max_length=100, null=False)
     assignedDoctorId = models.PositiveIntegerField(null=True)
     admitDate = models.DateField(auto_now=True)
-    status = models.BooleanField(default=False)
+    status = models.CharField(choices=doctor_patient_status, null=False, blank=False,max_length=100)
 
     @property
     def get_name(self):
@@ -81,19 +82,20 @@ class PatientDischargeDetails(models.Model):
     mobile = models.CharField(max_length=20, null=True)
     symptoms = models.CharField(max_length=100, null=True)
 
-    admitDate = models.DateField(null=False)
-    releaseDate = models.DateField(null=False)
-    daySpent = models.PositiveIntegerField(null=False)
+    admitDate = models.DateField(null=True)
+    releaseDate = models.DateField(null=True)
+    daySpent = models.PositiveIntegerField(null=True)
 
-    roomCharge = models.PositiveIntegerField(null=False)
-    medicineCost = models.PositiveIntegerField(null=False)
+    roomCharge = models.PositiveIntegerField(null=True)
+    medicineCost = models.PositiveIntegerField(null=True)
     doctorFee = models.PositiveIntegerField(null=False)
-    OtherCharge = models.PositiveIntegerField(null=False)
+    OtherCharge = models.PositiveIntegerField(null=True)
     total = models.PositiveIntegerField(null=False)
 
 
 class Post(models.Model):
-    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE,blank=True, null=True)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE,blank=True, null=True)
     # user = models.ForeignKey(User, on_delete=models.CASCADE),
     text = models.CharField(max_length=1000, null=False, blank=False)
 
@@ -114,7 +116,7 @@ class DoctorReview(models.Model):
     rating = models.IntegerField(choices=ratings,null=True, blank=True)
     comment = models.CharField(max_length=1000, null=True, blank= True)
 
-hospital_patient_status = [('Admitted', 'Admitted'), ('Discharged', 'Discharged')]
+
 
 
 class HospitalPatient(models.Model):
