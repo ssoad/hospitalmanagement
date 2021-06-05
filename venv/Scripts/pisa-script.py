@@ -1,4 +1,4 @@
-#!c:\users\sohan\pycharmprojects\hospitalmanagement\venv\scripts\python.exe
+#!C:\Users\sohan\PycharmProjects\hospitalmanagement\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'xhtml2pdf==0.2.5','console_scripts','pisa'
 import re
 import sys

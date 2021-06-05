@@ -150,7 +150,7 @@ def afterlogin_view(request):
         else:
             return render(request, 'hospital/doctor_wait_for_approval.html')
     elif is_patient(request.user):
-        accountapproval = models.Patient.objects.all().filter(user_id=request.user.id, status=True)
+        accountapproval = models.Patient.objects.all().filter(user_id=request.user.id, approved=True)
         if accountapproval:
             return redirect('patient-dashboard')
         else:
@@ -170,8 +170,8 @@ def admin_dashboard_view(request):
     doctorcount = models.Doctor.objects.all().filter(status=True).count()
     pendingdoctorcount = models.Doctor.objects.all().filter(status=False).count()
 
-    patientcount = models.Patient.objects.all().filter(status=True).count()
-    pendingpatientcount = models.Patient.objects.all().filter(status=False).count()
+    patientcount = models.Patient.objects.all().filter(approved=True).count()
+    pendingpatientcount = models.Patient.objects.all().filter(approved=False).count()
 
     appointmentcount = models.DoctorAppointment.objects.all().filter(status=True).count()
     pendingappointmentcount = models.DoctorAppointment.objects.all().filter(status=False).count()
@@ -304,7 +304,7 @@ def admin_patient_view(request):
 @login_required(login_url='adminlogin')
 @user_passes_test(is_admin)
 def admin_view_patient_view(request):
-    patients = models.Patient.objects.all().filter(status=True)
+    patients = models.Patient.objects.all().filter(approved=True)
     return render(request, 'hospital/admin_view_patient.html', {'patients': patients})
 
 
@@ -374,7 +374,7 @@ def admin_add_patient_view(request):
 @user_passes_test(is_admin)
 def admin_approve_patient_view(request):
     # those whose approval are needed
-    patients = models.Patient.objects.all().filter(status=False)
+    patients = models.Patient.objects.all().filter(approved=False)
     return render(request, 'hospital/admin_approve_patient.html', {'patients': patients})
 
 
@@ -382,7 +382,7 @@ def admin_approve_patient_view(request):
 @user_passes_test(is_admin)
 def approve_patient_view(request, pk):
     patient = models.Patient.objects.get(id=pk)
-    patient.status = True
+    patient.approved = True
     patient.save()
     return redirect('admin-dashboard')
 
@@ -527,20 +527,20 @@ def admin_add_appointment_view(request):
 
 
 @login_required(login_url='adminlogin')
-@user_passes_test(is_admin)
+@user_passes_test(is_doctor)
 def admin_approve_appointment_view(request):
     # those whose approval are needed
     appointments = models.DoctorAppointment.objects.all().filter(status=False)
     return render(request, 'hospital/admin_approve_appointment.html', {'appointments': appointments})
 
 
-@login_required(login_url='adminlogin')
-@user_passes_test(is_admin)
+@login_required
+@user_passes_test(is_doctor)
 def approve_appointment_view(request, pk):
     appointment = models.DoctorAppointment.objects.get(id=pk)
     appointment.status = True
     appointment.save()
-    return redirect(reverse('admin-approve-appointment'))
+    return redirect(reverse('doctor-view-appointment'))
 
 
 @login_required(login_url='adminlogin')
@@ -548,7 +548,7 @@ def approve_appointment_view(request, pk):
 def reject_appointment_view(request, pk):
     appointment = models.DoctorAppointment.objects.get(id=pk)
     appointment.delete()
-    return redirect('admin-approve-appointment')
+    return redirect('doctor-view-appointment')
 
 
 # ---------------------------------------------------------------------------------
@@ -569,7 +569,7 @@ def doctor_dashboard_view(request):
         post = Post(text=text, doctor=doctor)
         post.save()
     # for three cards
-    patientcount = models.Patient.objects.all().filter(status=True, assignedDoctorId=request.user.id).count()
+    patientcount = models.DoctorAppointment.objects.all().filter( doctor__user_id=request.user.id).count()
     appointmentcount = models.DoctorAppointment.objects.all().filter(status=True, doctor__user=request.user).count()
     patientdischarged = models.PatientDischargeDetails.objects.all().distinct().filter(
         assignedDoctorName=request.user.first_name).count()
@@ -580,7 +580,7 @@ def doctor_dashboard_view(request):
     patientid = []
     for a in appointments:
         patientid.append(a.patient_id)
-    patients = models.Patient.objects.all().filter(status=True, user_id__in=patientid).order_by('-id')
+    patients = models.Patient.objects.all().filter(approved=True, user_id__in=patientid).order_by('-id')
     appointments = zip(appointments, patients)
     mydict = {
         'patientcount': patientcount,
@@ -625,8 +625,8 @@ def hospital_dashboard_view(request):
 @login_required(login_url='doctorlogin')
 @user_passes_test(is_doctor)
 def doctor_view_patient_view(request):
-    patients = models.Patient.objects.all().filter(status="Enrolled", assignedDoctorId=request.user.id)
     doctor = models.Doctor.objects.get(user_id=request.user.id)  # for profile picture of doctor in sidebar
+    patients = models.DoctorAppointment.objects.all().filter(doctor=doctor)
     return render(request, 'hospital/doctor_view_patient.html', {'patients': patients, 'doctor': doctor})
 
 
@@ -651,12 +651,8 @@ def doctor_appointment_view(request):
 @user_passes_test(is_doctor)
 def doctor_view_appointment_view(request):
     doctor = models.Doctor.objects.get(user_id=request.user.id)  # for profile picture of doctor in sidebar
-    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctor__user_id=request.user.id)
-    patientid = []
-    for a in appointments:
-        patientid.append(a.patient_id)
-    patients = models.Patient.objects.all().filter(status=True, user_id__in=patientid)
-    appointments = zip(appointments, patients)
+    appointments = models.DoctorAppointment.objects.all().filter(doctor=doctor)
+    print(appointments)
     return render(request, 'hospital/doctor_view_appointment.html', {'appointments': appointments, 'doctor': doctor})
 
 
@@ -664,12 +660,7 @@ def doctor_view_appointment_view(request):
 @user_passes_test(is_doctor)
 def doctor_delete_appointment_view(request):
     doctor = models.Doctor.objects.get(user_id=request.user.id)  # for profile picture of doctor in sidebar
-    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctorId=request.user.id)
-    patientid = []
-    for a in appointments:
-        patientid.append(a.patientId)
-    patients = models.Patient.objects.all().filter(status=True, user_id__in=patientid)
-    appointments = zip(appointments, patients)
+    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctor=doctor)
     return render(request, 'hospital/doctor_delete_appointment.html', {'appointments': appointments, 'doctor': doctor})
 
 
@@ -679,12 +670,7 @@ def delete_appointment_view(request, pk):
     appointment = models.DoctorAppointment.objects.get(id=pk)
     appointment.delete()
     doctor = models.Doctor.objects.get(user_id=request.user.id)  # for profile picture of doctor in sidebar
-    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctorId=request.user.id)
-    patientid = []
-    for a in appointments:
-        patientid.append(a.patientId)
-    patients = models.Patient.objects.all().filter(status=True, user_id__in=patientid)
-    appointments = zip(appointments, patients)
+    appointments = models.DoctorAppointment.objects.all().filter(status=True, doctor=doctor)
     return render(request, 'hospital/doctor_delete_appointment.html', {'appointments': appointments, 'doctor': doctor})
 
 
@@ -700,15 +686,15 @@ def delete_appointment_view(request, pk):
 @user_passes_test(is_patient)
 def patient_dashboard_view(request):
     patient = models.Patient.objects.get(user_id=request.user.id)
-    doctor = models.Doctor.objects.get(user_id=patient.assignedDoctorId)
+    # doctor = models.Doctor.objects.get(user_id=patient.assignedDoctorId)
     mydict = {
         'patient': patient,
-        'doctorName': doctor.get_name,
-        'doctorMobile': doctor.mobile,
-        'doctorAddress': doctor.address,
-        'symptoms': patient.symptoms,
-        'doctorDepartment': doctor.department,
-        'admitDate': patient.admitDate,
+        # 'doctorName': doctor.get_name,
+        # 'doctorMobile': doctor.mobile,
+        # 'doctorAddress': doctor.address,
+        # 'symptoms': patient.symptoms,
+        # 'doctorDepartment': doctor.department,
+        # 'admitDate': patient.admitDate,
     }
     return render(request, 'hospital/patient_dashboard.html', context=mydict)
 
@@ -979,20 +965,21 @@ def doctor_indiv_review(request, id):
 
 
 def doctor_discharge_patient_view(request, pk):
-    patient = models.Patient.objects.get(id=pk)
-    days = (date.today() - patient.admitDate)  # 2 days, 0:00:00
-    assignedDoctor = models.User.objects.all().filter(id=patient.assignedDoctorId)
+    appoint = models.DoctorAppointment.objects.get(id = pk)
+    patient = appoint.patient
+    days = (date.today() - appoint.appointmentDate)  # 2 days, 0:00:00
+    assignedDoctor = appoint.doctor
     d = days.days  # only how many day that is 2
     patientDict = {
         'patientId': pk,
         'name': patient.get_name,
         'mobile': patient.mobile,
         'address': patient.address,
-        'symptoms': patient.symptoms,
-        'admitDate': patient.admitDate,
+        'symptoms': appoint.symtoms,
+        'admitDate': appoint.appointmentDate,
         'todayDate': date.today(),
         'day': d,
-        'assignedDoctorName': assignedDoctor[0].first_name,
+        'assignedDoctorName': assignedDoctor.get_name,
     }
     if request.method == 'POST':
         patient.status = "Discharged"
@@ -1008,10 +995,10 @@ def doctor_discharge_patient_view(request, pk):
         pDD = models.PatientDischargeDetails()
         pDD.patientId = pk
         pDD.patientName = patient.get_name
-        pDD.assignedDoctorName = assignedDoctor[0].first_name
+        pDD.assignedDoctorName = assignedDoctor.get_name
         pDD.address = patient.address
         pDD.mobile = patient.mobile
-        pDD.symptoms = patient.symptoms
+        pDD.symptoms = appoint.symtoms
         pDD.admitDate = date.today()
         pDD.releaseDate = date.today()
         pDD.daySpent = int(d)

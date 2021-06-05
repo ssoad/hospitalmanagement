@@ -1,15 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a6b1aa5-d73f-4c94-8857-4cce5c83b103" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/hospital/doctor_patient_bill.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/hospital/doctor_patient_final_bill.html" afterDir="false" />
+    <list default="true" id="2a6b1aa5-d73f-4c94-8857-4cce5c83b103" name="Default Changelist" comment="Update Doctor">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0002_delete_teacherextra.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0003_patient_admitdate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0004_patientdischargedetails.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0005_appointment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0006_appointment_status.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0007_auto_20200520_1023.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0008_doctor_profile_pic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0009_auto_20200523_1118.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0010_auto_20200523_1122.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0011_auto_20200523_1325.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0012_auto_20200523_1336.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0013_patient_profile_pic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0014_auto_20200526_1455.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0015_auto_20200526_1501.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0016_auto_20200622_1830.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0017_auto_20200622_1835.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0018_auto_20200928_0034.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0019_auto_20210520_1841.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0020_auto_20210520_1843.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0021_auto_20210520_1920.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0022_remove_doctor_hospital.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0023_post.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0024_post_hospital.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0025_auto_20210602_0010.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/0026_auto_20210606_0008.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospital/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hospital/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hospital/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospitalmanagement/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalmanagement/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hospital/admin_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/admin_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hospital/doctor_delete_appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/doctor_delete_appointment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hospital/doctor_view_appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/doctor_view_appointment.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/hospital/doctor_view_patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hospital/doctor_view_patient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/Django-3.0.5.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Django-3.0.5.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.1.2.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.1.2.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/python_bidi-0.4.2.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/python_bidi-0.4.2.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/sqlparse-0.3.1.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/sqlparse-0.3.1.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/django-admin.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/django-admin.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/django-admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/django-admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/futurize-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/futurize-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pasteurize-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pasteurize-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.9.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.9.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pisa-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pisa-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pybidi.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pybidi.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/sqlformat.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/sqlformat.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/xhtml2pdf-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/xhtml2pdf-script.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +141,11 @@
       <workItem from="1622482402162" duration="950000" />
       <workItem from="1622706186311" duration="222000" />
       <workItem from="1622706416312" duration="1260000" />
-      <workItem from="1622826154599" duration="11263000" />
+      <workItem from="1622826154599" duration="13139000" />
+      <workItem from="1622916903197" duration="68000" />
+      <workItem from="1622917054845" duration="3566000" />
+      <workItem from="1622921779133" duration="278000" />
+      <workItem from="1622922205324" duration="4958000" />
     </task>
     <task id="LOCAL-00001" summary="Todays Update">
       <created>1622149248209</created>
@@ -140,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622840606249</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update Doctor">
+      <created>1622842756545</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622842756545</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +219,7 @@
     <MESSAGE value="Hospital Review Done" />
     <MESSAGE value="Doctor Review Done" />
     <MESSAGE value="Update Pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Pagination" />
+    <MESSAGE value="Update Doctor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Doctor" />
   </component>
 </project>
