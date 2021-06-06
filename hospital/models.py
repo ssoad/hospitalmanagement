@@ -48,10 +48,7 @@ class Patient(models.Model):
     profile_pic = models.ImageField(upload_to='profile_pic/PatientProfilePic/', null=True, blank=True)
     address = models.CharField(max_length=40)
     mobile = models.CharField(max_length=20, null=False)
-    symptoms = models.CharField(max_length=100, null=False)
-    assignedDoctorId = models.PositiveIntegerField(null=True)
-    admitDate = models.DateField(auto_now=True)
-    status = models.CharField(choices=doctor_patient_status, null=False, blank=False,max_length=100)
+    approved = models.BooleanField(null=False, blank=False , default=True)
 
     @property
     def get_name(self):
@@ -62,13 +59,14 @@ class Patient(models.Model):
         return self.user.id
 
     def __str__(self):
-        return self.user.first_name + " (" + self.symptoms + ")"
+        return self.user.first_name
 
 
 class DoctorAppointment(models.Model):
     patient = models.ForeignKey(Patient, null=True, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor,null=True,on_delete=models.CASCADE)
     appointmentDate = models.DateField(auto_now=True)
+    symtoms = models.CharField(max_length=50, null=False, blank=True)
     description = models.TextField(max_length=500)
     status = models.BooleanField(default=False)
     is_reviewed = models.BooleanField(default=False)

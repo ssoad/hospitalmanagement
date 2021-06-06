@@ -40,11 +40,11 @@
       </thead>
       {% for p in patients %}
       <tr>
-        <td> {{p.get_name}}</td>
-        <td> <img src="{% static p.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-        <td>{{p.symptoms}}</td>
-        <td>{{p.mobile}}</td>
-        <td>{{p.address}}</td>
+        <td> {{p.patient.user.get_full_name}}</td>
+        <td> <img src="{% static p.patient.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td>{{p.symtoms}}</td>
+        <td>{{p.patient.mobile}}</td>
+        <td>{{p.patient.address}}</td>
       <td><a href="discharge/{{ p.id }}">Discharge</a></td>
       </tr>
       {% endfor %}
