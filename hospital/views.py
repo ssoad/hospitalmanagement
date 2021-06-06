@@ -871,12 +871,14 @@ def hospital_discharged_patient(request):
 def doctor_review(request, pk):
     doctor_appointment = models.DoctorAppointment.objects.get(id=pk)
     doctor = doctor_appointment.doctor
+    patient = doctor_appointment.patient
     if request.method == "POST":
         form = DoctorReviewForm(request.POST)
         print(form.is_valid())
         if form.is_valid():
             review = form.save(commit=False)
             review.doctor = doctor
+            review.patient = patient
             review.save()
             doctor_appointment.is_reviewed = True
             doctor_appointment.save()
@@ -889,12 +891,14 @@ def doctor_review(request, pk):
 def hospital_review(request, pk):
     hospital_appointment = models.HospitalPatient.objects.get(id=pk)
     hospital = hospital_appointment.hospital
+    patient = hospital_appointment.patient
     if request.method == "POST":
         form = HospitalReviewForm(request.POST)
         print(form.is_valid())
         if form.is_valid():
             review = form.save(commit=False)
             review.hospital = hospital
+            review.patient = patient
             review.save()
             hospital_appointment.is_reviewed = True
             hospital_appointment.save()
