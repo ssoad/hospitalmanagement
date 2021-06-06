@@ -21,7 +21,9 @@
 <br>
 <br>
 {% for r in reviews %}
-    <div class="card">
+    <div class="card" style="padding: 20px">
+    <img src="{% static r.patient.profile_pic.url %}" width="100" height="100" alt="Avatar" class="avatar">
+    <h5>{{ r.patient.user.get_full_name }}</h5>
     {% if r.rating == 5 %}
         <div class="row" style="align-content: center;alignment: center">
             <span class="fa fa-star"></span>
@@ -55,6 +57,7 @@
         </div>
 
         {% endif %}
+
     <p style="font-family: 'Harlow Solid Italic'; font-size: medium">"{{ r.comment }}"</p>
 
     </div>

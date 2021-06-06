@@ -102,6 +102,7 @@ ratings = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
 
 
 class HospitalReview(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True, default=1)
     hospital = models.ForeignKey(Hospital, null=False, blank=False, on_delete=models.CASCADE)
     rating = models.IntegerField(choices=ratings, null=False, blank=False)
     comment = models.CharField(max_length=1000)
@@ -110,6 +111,7 @@ class HospitalReview(models.Model):
 hospital_patient_status = [('Admitted', 'Admitted'), ('Discharged', 'Discharged')]
 
 class DoctorReview(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, null=True, default=1)
     doctor = models.ForeignKey(Doctor, null=False, blank=False, on_delete=models.CASCADE)
     rating = models.IntegerField(choices=ratings,null=True, blank=True)
     comment = models.CharField(max_length=1000, null=True, blank= True)
