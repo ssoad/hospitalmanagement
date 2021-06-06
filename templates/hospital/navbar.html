@@ -4,6 +4,24 @@
 
 <head>
   <meta charset="utf-8">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Patua+One&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
+
+
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -17,8 +35,21 @@
 
     .navbar-brand {
       font-size: 20px;
-      font-family: sans-serif;
+      font-family: 'Alfa Slab One', cursive;
+    }
+    .list {
+      font-size: 20px;
+      font-family: 'Lobster Two', cursive;
+    }
 
+    .navbar-others {
+      font-size: 20px;
+      font-family: 'Kaushan Script', cursive;
+    }
+
+    .navbar-login {
+      font-size: 20px;
+      font-family: 'Cardo', serif;
     }
   </style>
 </head>
@@ -35,14 +66,15 @@
       </button>
 
       <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-              <div class="navbar-nav">
-             
-                    <a href="/hospitals_list" class="nav-item nav-link">Hospitals List</a>
-                    <a href="/doctors_list" class="nav-item nav-link">Doctors List</a>             
+        <div class="navbar-nav">  </div>
+            <div class="navbar-nav">            
+                    <a href="/hospitals_list" class="list">Hospitals List  </a>
+                    <a href="/hospitals_list" class="nav-item nav-link">   </a>
+                    <a href="/doctors_list" class="list">Doctors List  </a>             
              </div>
           
              <div class="navbar-nav">
-                    <a href="/adminclick" class="nav-item nav-link">Admin_login</a>
+                    <a href="/adminclick"  class="nav-item nav-link">Admin_login</a>
                     <a href="/hospitalclick" class="nav-item nav-link">Hospital_login</a>
                     <a href="/doctorclick" class="nav-item nav-link">Doctor_login</a>
                     <a href="/patientclick" class="nav-item nav-link">Patient_login</a>
@@ -50,8 +82,13 @@
            
 
               <div class="navbar-nav">
-                    <a href="/aboutus" class="nav-item nav-link">About my project</a>
-                    <a href="/contactus" class="nav-item nav-link">Contact me</a>
+                    <a href="/aboutus" class="navbar-others">About my project</a>
+                    
+                    <!-- 
+                      <a href="/contactus" class="navbar-others">Contact me</a> 
+                      <a href="/patientclick" class="nav-item nav-link">Patient_login</a>
+                    -->
+
              </div>
 
       </div>
