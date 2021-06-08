@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>National Healthcare Online Management</title>
+  <title>Software management || Saifullah Sifat</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -97,21 +97,21 @@
       <img src="{% static patient.profile_pic.url %}" alt="Profile Pic" />
       <br><br>
       <h6>Patient</h6>
-      <h2>{{request.user.get_full_name}}</h2>
+      <h2>{{request.user.first_name}}</h2>
     </header>
     <ul>
       <li tabindex="0" class="icon-dashboard"> <a style="color:white; text-decoration:none;" href="/patient-dashboard"><span>Dashboard</span></a> </li>
       <li tabindex="0" class="icon-calendar"> <a style="color:white; text-decoration:none;" href="/patient-appointment"><span>Appointments</span></a></li>
-      
+      <li tabindex="0" class="icon-users"> <a style="color:white; text-decoration:none;" href="/patient-discharge"><span>Discharge</span></a></li>
         <li tabindex="0" class="icon-users"> <a style="color:white; text-decoration:none;" href="/patient-hospital-history"><span>Hospital History</span></a></li>
-        
+        <li tabindex="0" class="icon-users"> <a style="color:white; text-decoration:none;" href="/patient-doctor-review"><span>Doctor Review</span></a></li>
     </ul>
   </nav>
   <main>
     <!-- nav start -->
     <div class="bs-example">
       <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style="background:#337AB7;">
-        <a href="/admin-dashboard" class="navbar-brand">National Healthcare Online Management</a>
+        <a href="/admin-dashboard" class="navbar-brand">Project By Saifullah</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -132,10 +132,19 @@
     <br><br><br><br><br><br><br>
     <footer>
       <p>
-        <a id="ftr" href="https://www.facebook.com" class="fa fa-facebook"></a>
+        <a id="ftr" href="https://www.facebook.com/MisterSifat" class="fa fa-facebook"></a>
       </p>
       <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div style="color:#ffffff;" class="wow fadeInUp footer-copyright">
+              <p>Saifullah Sifat <br>
 
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   </main>
 
