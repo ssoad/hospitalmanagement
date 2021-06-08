@@ -44,7 +44,10 @@
       font-size: 20px;
       font-family: 'Secular One', sans-serif;
     }
-
+    .details {
+      font-size: 15px;
+      
+    }
 
 
     .glow {
@@ -97,50 +100,90 @@
 </div>
 <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
   <br>
-                    <div class="container-fluid"> 
+              <div class="container-fluid"> 
                       <div class="row"> 
-                        <div class="col-md-4"> 
+                        <div class="col-md-3"> 
                           <div class="card"> 
-                            <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+                            <img src={% static "profile_pic/HospitalprofilePic/1.United-Hospital-Dhaka.jpg" %} alt="United Hospital">
                             <div class="card-body"> 
-                              <h5> This is something--1</h5>
-                              <p> 
-                                I love working with people and I love working with technology and 
-                                I think the best thing we can do is have as many people involved as possible 
-                                to really make sure that we're building things that everyone can use. 
+                              <h5 class=" glow project-name"> United Hospital </h5>
+                              <p class="details"> 
+                                <br><br>
+                                United Hospital is a private hospital in Gulshan Thana, Dhaka, Bangladesh. Mohammad Faridur Rahman Khan is the Managing Director of the hospital and Mohammad Faizur Rahman is the CEO of the hospital.United Hospital along with Apollo Hospital Dhaka and Square Hospital are considered high end private hospitals. 
+                                <br><br><br>
+                                Address: Plot # 15 Rd No 71, Dhaka 1212 
+                                Hours: Open 24 hours
+                                Phone: 09666-710666
+                                
+                              </p>
+                              <a href="" class="btn btn-success">Read More...</a>
+                            </div>		
+                          </div>
+                        </div>
+                        
+                        
+                        <div class="col-md-3"> 
+                          <div class="card"> 
+                            <img src={% static "profile_pic/DoctorprofilePic/1._Dr.-Fowaz-Hussain-Shuvo-200x300.jpg" %} alt=""  />
+                            <div class="card-body"> 
+                              <h5> Dr. Fowaz Hussain</h5>
+                              <p class="details"> 
+                                Consultant-Hepatology & Gastroenterology.
+                                <br><br><br>
+                                Doctor details:<br>
+                                Degree : MBBS, MD (Hepatology).<br> 
+                                Department : Gastroenterology. <br>
+                                Speciality : Interventional Gastroenterologist.<br><br>
+                                Mobail:01922027173<br>
+                                hospital: Square Hospitals Ltd
                               </p>
                               <a href="" class="btn btn-success">Read More...</a>
                             </div>		
                           </div>
                         </div>	
-                        <div class="col-md-4"> 
+
+
+                        <div class="col-md-3"> 
                           <div class="card"> 
-                            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.finddoctor24.com%2Fsquare-hospital-dhaka%2F&psig=AOvVaw0AoKp5ayQyl2zaWciKIw-t&ust=1623096055866000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJid_pPmg_ECFQAAAAAdAAAAABAD" alt=""  />
+                            <img src={% static "profile_pic/HospitalprofilePic/2.Evercare-Hospital-Dhaka1.jpg" %} alt="" class="card-img-top" />
                             <div class="card-body"> 
-                              <h5> This is something--2</h5>
-                              <p> 
-                                I love working with people and I love working with technology and 
-                                I think the best thing we can do is have as many people involved as possible 
-                                to really make sure that we're building things that everyone can use. 
+                              <h5> Evercare Hospital</h5>
+                              <p class="details"> 
+                                <br>Welcome, Everyone. A good news to you 
+                                From today Covid test only 500taka<br><br>
+                                Address: <br>Plot: 81 Block: E, Dhaka 1229 <br>
+                                Hours: 24 open <br>
+                                Service options: Takeaway<br>
+                                Phone: 09666-710678
+                                
                               </p>
                               <a href="" class="btn btn-success">Read More...</a>
                             </div>		
                           </div>
                         </div>	
-                        <div class="col-md-4"> 
+
+                        <div class="col-md-3"> 
                           <div class="card"> 
-                            <img src={% static "images/bg.jpg" %} alt="" class="card-img-top" />
+                            <img src={% static "profile_pic/DoctorprofilePic/2._DR.-MD.-SAMSUL-ARFIN.jpg" %} alt=""  />
                             <div class="card-body"> 
-                              <h5> This is something--3</h5>
-                              <p> 
-                                I love working with people and I love working with technology and 
-                                I think the best thing we can do is have as many people involved as possible 
-                                to really make sure that we're building things that everyone can use. 
+                              <h5> Dr. Fowaz Hussain</h5>
+                              <p class="details"> 
+                                interventional gastroenterology
+                                <br><br><br>
+                                Doctor details:<br>
+                                Degree :  MBBS in the year 1979. FCPS (Medicine) from Dhaka Medical College under University of Dhaka, in the year1991.<br> 
+                                Department : Gastroenterology. <br>
+                                Speciality : Gastrointestinal, Liver & Pancreatic Diseases.<br><br>
+                                Mobail:01922027173<br>
+                                hospital: Square Hospitals Ltd
                               </p>
                               <a href="" class="btn btn-success">Read More...</a>
                             </div>		
                           </div>
-                        </div>	
+                        </div>
+
+
+
                       </div>
                       <br/>
                     </div>
@@ -239,7 +282,7 @@
                         </div>	
                       </div>
                       <br/>
-                    </div>
+              </div>
   <h5 class="display-3 " >Display Hospital and Doctor post </h5>
   <br><br>
   <p>
